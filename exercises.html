@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Factory Exercise</title>
+    <script src="angular.js"></script>
+
+    <script>
+      var app = angular.module('my-app', []);
+
+      app.controller('MainController', function(goodJob) {
+        goodJob.greeting('Bob');
+      });
+
+      app.factory('goodJob', function() {
+        return {
+          greeting: function(person) {
+            console.log('Good Job ' + person)
+          }
+        }
+      })
+    </script>
+  </head>
+  <body ng-app="my-app" ng-controller="MainController">
+
+  </body>
+</html>

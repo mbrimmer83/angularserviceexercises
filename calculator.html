@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <script src="angular.js"></script>
+    <script>
+    var app = angular.module('app', []);
+
+    app.factory('formula', function() {
+      return {
+        calculate: function (a, b, c) {
+          return a + b - c;
+        }
+      }
+    })
+
+    app.controller('Controller', function($scope, formula) {
+      $scope.d = formula.calculate($scope.a, $scope.b, $scope.c)
+      // extract the formula below into a service
+      // the line below show be changed to:
+      // $scope.d = formula.calculate($scope.a, $scope.b, $scope.c)
+      // while formula is a service
+      // $scope.d = $scope.a + $scope.b - $scope.c;
+    });
+    </script>
+  </head>
+  <body ng-app="app" ng-controller="Controller">
+    <input type="text" ng-model="a">
+    +
+    <input type="text" ng-model="b">
+    -
+    <input type="text" ng-model="c">
+    =
+    <input type="text" ng-model="d">
+    <button ng-click="calculate()">Calculate</button>
+  </body>
+</html>
